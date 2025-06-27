@@ -102,7 +102,13 @@
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
             }
-        }
+            #q15Table {
+              overflow-x: auto;
+             }
+            #q15Table table {
+             min-width: 600px;
+            }
+         }
 
         .container {
             background: var(--color-armada-white);
@@ -545,7 +551,7 @@
                     </div>
                 </div>
 
-                <div id="q15Table" class="mt-6 p-4 border rounded-lg hidden" style="background-color: rgba(23, 55, 99, 0.05);">
+                <div id="q15Table" class="mt-6 p-4 border rounded-lg hidden overflow-x-auto" style="background-color: rgba(23, 55, 99, 0.05);">
                     <p class="text-sm italic mb-4">NOTA: Si has contestado afirmativamente 2 o más ítems de la pregunta 15 (a-d), responde a las preguntas de la siguiente tabla, si no, continúa con la pregunta 16.</p>
                     <p class="text-lg font-medium mb-4">En esta tabla encontrarás una serie de reacciones que pueden experimentar las personas que están viviendo una situación estresante. Lee detenidamente cada pregunta y marca en qué grado te ha afectado esa situación durante EL ÚLTIMO MES.</p>
                     <div class="overflow-x-auto">
