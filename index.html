@@ -77,7 +77,7 @@
             }
             .header-armada .logo-image {
                 margin-bottom: 0.5rem;
-                height: 80px; /* Adjust size for mobile */
+                height: 80px;
             }
             .header-armada .title-block {
                 align-items: center;
@@ -88,7 +88,19 @@
             }
             .header-armada .title-block .title-image {
                 margin-top: 0.25rem;
-                height: 30px; /* Adjust size for mobile */
+                height: 30px;
+            }
+            th, td {
+                padding: 0.5rem;
+                font-size: 0.75rem; /* Further reduce font size for tables on mobile */
+                white-space: normal; /* Allow text to wrap in table cells */
+            }
+            th {
+                white-space: normal; /* Allow header text to wrap if needed */
+            }
+            .overflow-x-auto {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
             }
         }
 
@@ -156,7 +168,7 @@
         .checkbox-option input[type="checkbox"] {
             margin-right: 0.75rem;
             accent-color: var(--color-armada-blue);
-            vertical-align: middle; /* Ensure vertical alignment with text */
+            vertical-align: middle;
         }
 
         input[type="text"], input[type="tel"], textarea {
@@ -207,18 +219,12 @@
             padding: 0.75rem;
             text-align: left;
         }
-        @media (max-width: 767px) {
-            th, td {
-                padding: 0.5rem;
-                font-size: 0.8rem;
-            }
-        }
         th {
             background-color: #e5e7eb;
             color: #4b5563;
             font-weight: 600;
             text-transform: uppercase;
-            white-space: nowrap; /* Prevent header text from wrapping */
+            white-space: nowrap;
         }
         tr:nth-child(even) {
             background-color: #f9fafb;
@@ -230,10 +236,10 @@
 </head>
 <body class="selection:bg-blue-200 selection:text-blue-900">
     <header class="header-armada">
-        <img src="logo.png" alt="Logotipo de la Armada Española" class="logo-image" />
+        <img src="https://placehold.co/150x80/C7C7C7/173763?text=Logo" onerror="this.onerror=null;this.src='logo.png';" alt="Logotipo de la Armada Española" class="logo-image" />
         <div class="title-block">
             <h1>Cuestionario Psicológico Postmisión</h1>
-            <img src="identificar.png" alt="Identificador Corporativo" class="title-image" />
+            <img src="Identificador Corporativo Gris.png" alt="Identificador Corporativo" class="title-image" />
         </div>
     </header>
 
