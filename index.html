@@ -69,7 +69,7 @@
             margin-top: 0.5rem;
         }
 
-        @media (max-width: 467px) {
+        @media (max-width: 767px) {
             .header-armada {
                 flex-direction: column;
                 justify-content: center;
@@ -90,25 +90,26 @@
                 margin-top: 0.25rem;
                 height: 30px;
             }
+            .desktop-view {
+                display: none !important;
+            }
+            .mobile-view {
+                display: block !important;
+            }
+            /* Adjust table styles for mobile */
             th, td {
                 padding: 0.5rem;
                 font-size: 0.75rem;
-                white-space: normal;
+                white-space: normal; /* Allow text to wrap */
             }
             th {
-                white-space: normal;
+                white-space: normal; /* Allow header text to wrap */
             }
             .overflow-x-auto {
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
             }
-            #q15Table {
-              overflow-x: auto;
-             }
-            #q15Table table {
-             min-width: 600px;
-            }
-         }
+        }
 
         .container {
             background: var(--color-armada-white);
@@ -169,6 +170,12 @@
             display: flex;
             align-items: center;
             color: #374151;
+            /* Removed direct margin-bottom here to rely on space-y-2 */
+        }
+        /* Ensure space-y-2 applies its effect correctly by adding margin-top to all but the first child */
+        .flex-col.space-y-2 > .radio-option:not(:first-child),
+        .flex-col.space-y-2 > .checkbox-option:not(:first-child) {
+            margin-top: 0.5rem; /* This corresponds to Tailwind's space-y-2 */
         }
         .radio-option input[type="radio"],
         .checkbox-option input[type="checkbox"] {
@@ -551,7 +558,8 @@
                     </div>
                 </div>
 
-                <div id="q15Table" class="mt-6 p-4 border rounded-lg hidden overflow-x-auto" style="background-color: rgba(23, 55, 99, 0.05);">
+                <!-- Desktop View for P15 Table -->
+                <div id="q15TableDesktop" class="mt-6 p-4 border rounded-lg overflow-x-auto desktop-view" style="background-color: rgba(23, 55, 99, 0.05);">
                     <p class="text-sm italic mb-4">NOTA: Si has contestado afirmativamente 2 o más ítems de la pregunta 15 (a-d), responde a las preguntas de la siguiente tabla, si no, continúa con la pregunta 16.</p>
                     <p class="text-lg font-medium mb-4">En esta tabla encontrarás una serie de reacciones que pueden experimentar las personas que están viviendo una situación estresante. Lee detenidamente cada pregunta y marca en qué grado te ha afectado esa situación durante EL ÚLTIMO MES.</p>
                     <div class="overflow-x-auto">
@@ -715,6 +723,194 @@
                         </table>
                     </div>
                 </div>
+
+                <!-- Mobile View for P15 List -->
+                <div id="q15TableMobile" class="mt-6 p-4 border rounded-lg mobile-view" style="background-color: rgba(23, 55, 99, 0.05);">
+                    <p class="text-sm italic mb-4">NOTA: Si has contestado afirmativamente 2 o más ítems de la pregunta 15 (a-d), responde a las preguntas de la siguiente lista, si no, continúa con la pregunta 16.</p>
+                    <p class="text-lg font-medium mb-4">En esta lista encontrarás una serie de reacciones que pueden experimentar las personas que están viviendo una situación estresante. Lee detenidamente cada pregunta y marca en qué grado te ha afectado esa situación durante EL ÚLTIMO MES.</p>
+                    <div class="flex flex-col space-y-4">
+                        <div class="mb-3">
+                            <p class="text-base font-medium">e. Imágenes o pensamientos recurrentes sobre una experiencia traumática pasada</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q15_e" value="Nada" /> Nada</label>
+                                <label class="radio-option"><input type="radio" name="q15_e" value="Un poco" /> Un poco</label>
+                                <label class="radio-option"><input type="radio" name="q15_e" value="Algo" /> Algo</label>
+                                <label class="radio-option"><input type="radio" name="q15_e" value="Bastante" /> Bastante</label>
+                                <label class="radio-option"><input type="radio" name="q15_e" value="Mucho" /> Mucho</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">f. Sueños desagradables o pesadillas sobre la experiencia traumática</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q15_f" value="Nada" /> Nada</label>
+                                <label class="radio-option"><input type="radio" name="q15_f" value="Un poco" /> Un poco</label>
+                                <label class="radio-option"><input type="radio" name="q15_f" value="Algo" /> Algo</label>
+                                <label class="radio-option"><input type="radio" name="q15_f" value="Bastante" /> Bastante</label>
+                                <label class="radio-option"><input type="radio" name="q15_f" value="Mucho" /> Mucho</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">g. Sentir o actuar como si la experiencia traumática fuera a repetirse de nuevo (o como si la revivieras)</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q15_g" value="Nada" /> Nada</label>
+                                <label class="radio-option"><input type="radio" name="q15_g" value="Un poco" /> Un poco</label>
+                                <label class="radio-option"><input type="radio" name="q15_g" value="Algo" /> Algo</label>
+                                <label class="radio-option"><input type="radio" name="q15_g" value="Bastante" /> Bastante</label>
+                                <label class="radio-option"><input type="radio" name="q15_g" value="Mucho" /> Mucho</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">h. Sentirte molesto o preocupado cuando algo te recuerda la experiencia traumática</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q15_h" value="Nada" /> Nada</label>
+                                <label class="radio-option"><input type="radio" name="q15_h" value="Un poco" /> Un poco</label>
+                                <label class="radio-option"><input type="radio" name="q15_h" value="Algo" /> Algo</label>
+                                <label class="radio-option"><input type="radio" name="q15_h" value="Bastante" /> Bastante</label>
+                                <label class="radio-option"><input type="radio" name="q15_h" value="Mucho" /> Mucho</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">i. Tener reacciones físicas (palpitaciones, sudoración, dificultad para respirar,...) cuando algo te recuerda la experiencia traumática</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q15_i" value="Nada" /> Nada</label>
+                                <label class="radio-option"><input type="radio" name="q15_i" value="Un poco" /> Un poco</label>
+                                <label class="radio-option"><input type="radio" name="q15_i" value="Algo" /> Algo</label>
+                                <label class="radio-option"><input type="radio" name="q15_i" value="Bastante" /> Bastante</label>
+                                <label class="radio-option"><input type="radio" name="q15_i" value="Mucho" /> Mucho</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">j. Evitar pensar o hablar sobre el suceso traumático</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q15_j" value="Nada" /> Nada</label>
+                                <label class="radio-option"><input type="radio" name="q15_j" value="Un poco" /> Un poco</label>
+                                <label class="radio-option"><input type="radio" name="q15_j" value="Algo" /> Algo</label>
+                                <label class="radio-option"><input type="radio" name="q15_j" value="Bastante" /> Bastante</label>
+                                <label class="radio-option"><input type="radio" name="q15_j" value="Mucho" /> Mucho</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">k. Evitar actividades o situaciones que te recuerdan la experiencia traumática</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q15_k" value="Nada" /> Nada</label>
+                                <label class="radio-option"><input type="radio" name="q15_k" value="Un poco" /> Un poco</label>
+                                <label class="radio-option"><input type="radio" name="q15_k" value="Algo" /> Algo</label>
+                                <label class="radio-option"><input type="radio" name="q15_k" value="Bastante" /> Bastante</label>
+                                <label class="radio-option"><input type="radio" name="q15_k" value="Mucho" /> Mucho</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">l. Dificultad para recordar aspectos o partes importantes de la experiencia traumática</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q15_l" value="Nada" /> Nada</label>
+                                <label class="radio-option"><input type="radio" name="q15_l" value="Un poco" /> Un poco</label>
+                                <label class="radio-option"><input type="radio" name="q15_l" value="Algo" /> Algo</label>
+                                <label class="radio-option"><input type="radio" name="q15_l" value="Bastante" /> Bastante</label>
+                                <label class="radio-option"><input type="radio" name="q15_l" value="Mucho" /> Mucho</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">m.Pérdida de interés en cosas o actividades que solías disfrutar</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q15_m" value="Nada" /> Nada</label>
+                                <label class="radio-option"><input type="radio" name="q15_m" value="Un poco" /> Un poco</label>
+                                <label class="radio-option"><input type="radio" name="q15_m" value="Algo" /> Algo</label>
+                                <label class="radio-option"><input type="radio" name="q15_m" value="Bastante" /> Bastante</label>
+                                <label class="radio-option"><input type="radio" name="q15_m" value="Mucho" /> Mucho</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">n.Distanciamiento social y aislamiento</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q15_n" value="Nada" /> Nada</label>
+                                <label class="radio-option"><input type="radio" name="q15_n" value="Un poco" /> Un poco</label>
+                                <label class="radio-option"><input type="radio" name="q15_n" value="Algo" /> Algo</label>
+                                <label class="radio-option"><input type="radio" name="q15_n" value="Bastante" /> Bastante</label>
+                                <label class="radio-option"><input type="radio" name="q15_n" value="Mucho" /> Mucho</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">o. Sentimiento de embotamiento emocional o incapacidad de experimentar sentimientos de amor hacia las personas cercanas</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q15_o" value="Nada" /> Nada</label>
+                                <label class="radio-option"><input type="radio" name="q15_o" value="Un poco" /> Un poco</label>
+                                <label class="radio-option"><input type="radio" name="q15_o" value="Algo" /> Algo</label>
+                                <label class="radio-option"><input type="radio" name="q15_o" value="Bastante" /> Bastante</label>
+                                <label class="radio-option"><input type="radio" name="q15_o" value="Mucho" /> Mucho</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">p. Sentir que tu futuro será truncado</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q15_p" value="Nada" /> Nada</label>
+                                <label class="radio-option"><input type="radio" name="q15_p" value="Un poco" /> Un poco</label>
+                                <label class="radio-option"><input type="radio" name="q15_p" value="Algo" /> Algo</label>
+                                <label class="radio-option"><input type="radio" name="q15_p" value="Bastante" /> Bastante</label>
+                                <label class="radio-option"><input type="radio" name="q15_p" value="Mucho" /> Mucho</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">q.Problemas para conciliar el sueño o mantenerse despierto</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q15_q" value="Nada" /> Nada</label>
+                                <label class="radio-option"><input type="radio" name="q15_q" value="Un poco" /> Un poco</label>
+                                <label class="radio-option"><input type="radio" name="q15_q" value="Algo" /> Algo</label>
+                                <label class="radio-option"><input type="radio" name="q15_q" value="Bastante" /> Bastante</label>
+                                <label class="radio-option"><input type="radio" name="q15_q" value="Mucho" /> Mucho</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">r. Sentirse irritable o tener ataques de ira</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q15_r" value="Nada" /> Nada</label>
+                                <label class="radio-option"><input type="radio" name="q15_r" value="Un poco" /> Un poco</label>
+                                <label class="radio-option"><input type="radio" name="q15_r" value="Algo" /> Algo</label>
+                                <label class="radio-option"><input type="radio" name="q15_r" value="Bastante" /> Bastante</label>
+                                <label class="radio-option"><input type="radio" name="q15_r" value="Mucho" /> Mucho</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">s. Tener problemas de concentración</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q15_s" value="Nada" /> Nada</label>
+                                <label class="radio-option"><input type="radio" name="q15_s" value="Un poco" /> Un poco</label>
+                                <label class="radio-option"><input type="radio" name="q15_s" value="Algo" /> Algo</label>
+                                <label class="radio-option"><input type="radio" name="q15_s" value="Bastante" /> Bastante</label>
+                                <label class="radio-option"><input type="radio" name="q15_s" value="Mucho" /> Mucho</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">t. Sentir que estás en alerta, en guardia o vigilante</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q15_t" value="Nada" /> Nada</label>
+                                <label class="radio-option"><input type="radio" name="q15_t" value="Un poco" /> Un poco</label>
+                                <label class="radio-option"><input type="radio" name="q15_t" value="Algo" /> Algo</label>
+                                <label class="radio-option"><input type="radio" name="q15_t" value="Bastante" /> Bastante</label>
+                                <label class="radio-option"><input type="radio" name="q15_t" value="Mucho" /> Mucho</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">u. Sentirse nervioso o asustarse con facilidad</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q15_u" value="Nada" /> Nada</label>
+                                <label class="radio-option"><input type="radio" name="q15_u" value="Un poco" /> Un poco</label>
+                                <label class="radio-option"><input type="radio" name="q15_u" value="Algo" /> Algo</label>
+                                <label class="radio-option"><input type="radio" name="q15_u" value="Bastante" /> Bastante</label>
+                                <label class="radio-option"><input type="radio" name="q15_u" value="Mucho" /> Mucho</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">v. ¿En qué medida estos problemas (de la “e” a la “u”) han afectado a tu trabajo, a tu día a día en casa o a tus relaciones personales?</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q15_v" value="Nada" /> Nada</label>
+                                <label class="radio-option"><input type="radio" name="q15_v" value="Un poco" /> Un poco</label>
+                                <label class="radio-option"><input type="radio" name="q15_v" value="Algo" /> Algo</label>
+                                <label class="radio-option"><input type="radio" name="q15_v" value="Bastante" /> Bastante</label>
+                                <label class="radio-option"><input type="radio" name="q15_v" value="Mucho" /> Mucho</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- Pregunta 16 -->
@@ -741,7 +937,8 @@
                     </div>
                 </div>
 
-                <div id="q16Table" class="mt-6 p-4 border rounded-lg hidden" style="background-color: rgba(23, 55, 99, 0.05);">
+                <!-- Desktop View for P16 Table -->
+                <div id="q16TableDesktop" class="mt-6 p-4 border rounded-lg desktop-view" style="background-color: rgba(23, 55, 99, 0.05);">
                     <p class="text-sm italic mb-4">NOTA: Si en alguna de las preguntas anteriores (16a o 16b) has contestado “Más de la mitad de los días” o “casi todos los días”, responde a las preguntas de la siguiente tabla. Si no, continúa en la pregunta 17.</p>
                     <p class="text-lg font-medium mb-4">Durante las 2 ÚLTIMAS SEMANAS, ¿Con qué frecuencia has sentido los siguientes problemas?</p>
                     <div class="overflow-x-auto">
@@ -800,6 +997,68 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+
+                <!-- Mobile View for P16 List -->
+                <div id="q16TableMobile" class="mt-6 p-4 border rounded-lg mobile-view" style="background-color: rgba(23, 55, 99, 0.05);">
+                    <p class="text-sm italic mb-4">NOTA: Si en alguna de las preguntas anteriores (16a o 16b) has contestado “Más de la mitad de los días” o “casi todos los días”, responde a las preguntas de la siguiente lista. Si no, continúa en la pregunta 17.</p>
+                    <p class="text-lg font-medium mb-4">Durante las 2 ÚLTIMAS SEMANAS, ¿Con qué frecuencia has sentido los siguientes problemas?</p>
+                    <div class="flex flex-col space-y-4">
+                        <div class="mb-3">
+                            <p class="text-base font-medium">c.Dificultad para dormirse o mantenerse despierto, o dormir demasiado</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q16_c" value="Nunca" /> Nunca</label>
+                                <label class="radio-option"><input type="radio" name="q16_c" value="Algunos días" /> Algunos días</label>
+                                <label class="radio-option"><input type="radio" name="q16_c" value="La mayoría de los días" /> La mayoría de los días</label>
+                                <label class="radio-option"><input type="radio" name="q16_c" value="Casi todos los días" /> Casi todos los días</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">d. Sentirse cansado o con poca energía</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q16_d" value="Nunca" /> Nunca</label>
+                                <label class="radio-option"><input type="radio" name="q16_d" value="Algunos días" /> Algunos días</label>
+                                <label class="radio-option"><input type="radio" name="q16_d" value="La mayoría de los días" /> La mayoría de los días</label>
+                                <label class="radio-option"><input type="radio" name="q16_d" value="Casi todos los días" /> Casi todos los días</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">e. Falta de apetito o comer más de lo habitual</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q16_e" value="Nunca" /> Nunca</label>
+                                <label class="radio-option"><input type="radio" name="q16_e" value="Algunos días" /> Algunos días</label>
+                                <label class="radio-option"><input type="radio" name="q16_e" value="La mayoría de los días" /> La mayoría de los días</label>
+                                <label class="radio-option"><input type="radio" name="q16_e" value="Casi todos los días" /> Casi todos los días</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">f. Sentirte mal contigo mismo (o sentir que eres un fracaso y vas a fallarte a ti mismo y a los demás)</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q16_f" value="Nunca" /> Nunca</label>
+                                <label class="radio-option"><input type="radio" name="q16_f" value="Algunos días" /> Algunos días</label>
+                                <label class="radio-option"><input type="radio" name="q16_f" value="La mayoría de los días" /> La mayoría de los días</label>
+                                <label class="radio-option"><input type="radio" name="q16_f" value="Casi todos los días" /> Casi todos los días</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">g. Dificultad para concentrarte en tareas sencillas (como leer el periódico o ver la televisión)</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q16_g" value="Nunca" /> Nunca</label>
+                                <label class="radio-option"><input type="radio" name="q16_g" value="Algunos días" /> Algunos días</label>
+                                <label class="radio-option"><input type="radio" name="q16_g" value="La mayoría de los días" /> La mayoría de los días</label>
+                                <label class="radio-option"><input type="radio" name="q16_g" value="Casi todos los días" /> Casi todos los días</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-base font-medium">h. Moverte o hablar muy despacio, hasta el punto de que los demás lo notan. O al contrario, estar muy inquieto y “de un lado para otro”</p>
+                            <div class="flex flex-col space-y-2">
+                                <label class="radio-option"><input type="radio" name="q16_h" value="Nunca" /> Nunca</label>
+                                <label class="radio-option"><input type="radio" name="q16_h" value="Algunos días" /> Algunos días</label>
+                                <label class="radio-option"><input type="radio" name="q16_h" value="La mayoría de los días" /> La mayoría de los días</label>
+                                <label class="radio-option"><input type="radio" name="q16_h" value="Casi todos los días" /> Casi todos los días</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -1082,7 +1341,8 @@
             const q15_b = document.querySelector('input[name="evitarPensamientos"][value="SI"]');
             const q15_c = document.querySelector('input[name="estadoAlerta"][value="SI"]');
             const q15_d = document.querySelector('input[name="distraidoDesconectado"][value="SI"]');
-            const q15Table = document.getElementById('q15Table');
+            const q15TableDesktop = document.getElementById('q15TableDesktop');
+            const q15TableMobile = document.getElementById('q15TableMobile');
 
             const updateQ15TableVisibility = () => {
                 let siCount = 0;
@@ -1092,10 +1352,13 @@
                 if (q15_d && q15_d.checked) siCount++;
 
                 if (siCount >= 2) {
-                    q15Table.classList.remove('hidden');
+                    q15TableDesktop.classList.remove('hidden');
+                    q15TableMobile.classList.remove('hidden');
                 } else {
-                    q15Table.classList.add('hidden');
-                    q15Table.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+                    q15TableDesktop.classList.add('hidden');
+                    q15TableMobile.classList.add('hidden');
+                    q15TableDesktop.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+                    q15TableMobile.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
                 }
             };
 
@@ -1105,7 +1368,8 @@
 
             const q16_a_radios = document.querySelectorAll('input[name="q16_a"]');
             const q16_b_radios = document.querySelectorAll('input[name="q16_b"]');
-            const q16Table = document.getElementById('q16Table');
+            const q16TableDesktop = document.getElementById('q16TableDesktop');
+            const q16TableMobile = document.getElementById('q16TableMobile');
 
             const updateQ16TableVisibility = () => {
                 const q16_a_val = getRadioValue('q16_a');
@@ -1113,10 +1377,13 @@
 
                 if (q16_a_val === 'Más de la mitad de los días' || q16_a_val === 'Casi todos los días' ||
                     q16_b_val === 'Más de la mitad de los días' || q16_b_val === 'Casi todos los días') {
-                    q16Table.classList.remove('hidden');
+                    q16TableDesktop.classList.remove('hidden');
+                    q16TableMobile.classList.remove('hidden');
                 } else {
-                    q16Table.classList.add('hidden');
-                    q16Table.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+                    q16TableDesktop.classList.add('hidden');
+                    q16TableMobile.classList.add('hidden');
+                    q16TableDesktop.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+                    q16TableMobile.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
                 }
             };
 
@@ -1244,8 +1511,10 @@
                     document.getElementById('relacionesFollowUp').classList.add('hidden');
                     document.getElementById('asistenciaEstresExplica').classList.add('hidden');
                     document.getElementById('medicacionComplementoExplica').classList.add('hidden');
-                    document.getElementById('q15Table').classList.add('hidden');
-                    document.getElementById('q16Table').classList.add('hidden');
+                    document.getElementById('q15TableDesktop').classList.add('hidden'); /* Hide both desktop and mobile views */
+                    document.getElementById('q15TableMobile').classList.add('hidden');
+                    document.getElementById('q16TableDesktop').classList.add('hidden');
+                    document.getElementById('q16TableMobile').classList.add('hidden');
                     document.getElementById('preocupacionSaludExposicionExplica').classList.add('hidden');
                 }
             } catch (e) {
