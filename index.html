@@ -69,6 +69,29 @@
             margin-top: 0.5rem;
         }
 
+        @media (max-width: 767px) {
+            .header-armada {
+                flex-direction: column;
+                justify-content: center;
+                padding: 1rem;
+            }
+            .header-armada .logo-image {
+                margin-bottom: 0.5rem;
+                height: 80px; /* Adjust size for mobile */
+            }
+            .header-armada .title-block {
+                align-items: center;
+            }
+            .header-armada .title-block h1 {
+                text-align: center;
+                font-size: 1.5rem;
+            }
+            .header-armada .title-block .title-image {
+                margin-top: 0.25rem;
+                height: 30px; /* Adjust size for mobile */
+            }
+        }
+
         .container {
             background: var(--color-armada-white);
             padding: 2.5rem;
@@ -128,14 +151,13 @@
             display: flex;
             align-items: center;
             color: #374151;
-            /* Eliminar margin-bottom directo aquí, dejar que Tailwind 'space-y-2' lo maneje */
         }
         .radio-option input[type="radio"],
         .checkbox-option input[type="checkbox"] {
             margin-right: 0.75rem;
             accent-color: var(--color-armada-blue);
+            vertical-align: middle; /* Ensure vertical alignment with text */
         }
-
 
         input[type="text"], input[type="tel"], textarea {
             border-color: #d1d5db;
@@ -185,11 +207,18 @@
             padding: 0.75rem;
             text-align: left;
         }
+        @media (max-width: 767px) {
+            th, td {
+                padding: 0.5rem;
+                font-size: 0.8rem;
+            }
+        }
         th {
             background-color: #e5e7eb;
             color: #4b5563;
             font-weight: 600;
             text-transform: uppercase;
+            white-space: nowrap; /* Prevent header text from wrapping */
         }
         tr:nth-child(even) {
             background-color: #f9fafb;
@@ -201,10 +230,10 @@
 </head>
 <body class="selection:bg-blue-200 selection:text-blue-900">
     <header class="header-armada">
-        <img src="logo.png";" alt="Logotipo de la Armada Española" class="logo-image" />
+        <img src="https://placehold.co/150x80/C7C7C7/173763?text=Logo" onerror="this.onerror=null;this.src='logo.png';" alt="Logotipo de la Armada Española" class="logo-image" />
         <div class="title-block">
             <h1>Cuestionario Psicológico Postmisión</h1>
-            <img src="identificar.png" alt="Identificador Corporativo" class="title-image" />
+            <img src="Identificador Corporativo Gris.png" alt="Identificador Corporativo" class="title-image" />
         </div>
     </header>
 
@@ -214,7 +243,7 @@
 
         <form id="questionnaireForm">
             <section class="question-group">
-                <h2><b>DATOS DE FILIACIÓN</b></h2>
+                <h2>DATOS DE FILIACIÓN</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label for="nombre" class="block text-sm font-semibold mb-2">Nombre:</label>
