@@ -69,6 +69,14 @@
             margin-top: 0.5rem;
         }
 
+        /* Default visibility for desktop, hidden for mobile */
+        .desktop-view {
+            display: block;
+        }
+        .mobile-view {
+            display: none;
+        }
+
         @media (max-width: 767px) {
             .header-armada {
                 flex-direction: column;
@@ -90,6 +98,7 @@
                 margin-top: 0.25rem;
                 height: 30px;
             }
+            /* Override visibility for mobile */
             .desktop-view {
                 display: none !important;
             }
@@ -170,12 +179,11 @@
             display: flex;
             align-items: center;
             color: #374151;
-            /* Removed direct margin-bottom here to rely on space-y-2 */
         }
-        /* Ensure space-y-2 applies its effect correctly by adding margin-top to all but the first child */
+        /* Tailwind's space-y-2 equivalent for direct children */
         .flex-col.space-y-2 > .radio-option:not(:first-child),
         .flex-col.space-y-2 > .checkbox-option:not(:first-child) {
-            margin-top: 0.5rem; /* This corresponds to Tailwind's space-y-2 */
+            margin-top: 0.5rem;
         }
         .radio-option input[type="radio"],
         .checkbox-option input[type="checkbox"] {
@@ -249,10 +257,10 @@
 </head>
 <body class="selection:bg-blue-200 selection:text-blue-900">
     <header class="header-armada">
-        <img src="logo.png" alt="Logotipo de la Armada Española" class="logo-image" />
+        <img src="https://placehold.co/150x80/C7C7C7/173763?text=Logo" onerror="this.onerror=null;this.src='logo.png';" alt="Logotipo de la Armada Española" class="logo-image" />
         <div class="title-block">
             <h1>Cuestionario Psicológico Postmisión</h1>
-            <img src="identificar.png" alt="Identificador Corporativo" class="title-image" />
+            <img src="Identificador Corporativo Gris.png" alt="Identificador Corporativo" class="title-image" />
         </div>
     </header>
 
@@ -559,7 +567,7 @@
                 </div>
 
                 <!-- Desktop View for P15 Table -->
-                <div id="q15TableDesktop" class="mt-6 p-4 border rounded-lg overflow-x-auto desktop-view" style="background-color: rgba(23, 55, 99, 0.05);">
+                <div id="q15TableDesktop" class="mt-6 p-4 border rounded-lg overflow-x-auto desktop-view hidden" style="background-color: rgba(23, 55, 99, 0.05);">
                     <p class="text-sm italic mb-4">NOTA: Si has contestado afirmativamente 2 o más ítems de la pregunta 15 (a-d), responde a las preguntas de la siguiente tabla, si no, continúa con la pregunta 16.</p>
                     <p class="text-lg font-medium mb-4">En esta tabla encontrarás una serie de reacciones que pueden experimentar las personas que están viviendo una situación estresante. Lee detenidamente cada pregunta y marca en qué grado te ha afectado esa situación durante EL ÚLTIMO MES.</p>
                     <div class="overflow-x-auto">
@@ -725,7 +733,7 @@
                 </div>
 
                 <!-- Mobile View for P15 List -->
-                <div id="q15TableMobile" class="mt-6 p-4 border rounded-lg mobile-view" style="background-color: rgba(23, 55, 99, 0.05);">
+                <div id="q15TableMobile" class="mt-6 p-4 border rounded-lg mobile-view hidden" style="background-color: rgba(23, 55, 99, 0.05);">
                     <p class="text-sm italic mb-4">NOTA: Si has contestado afirmativamente 2 o más ítems de la pregunta 15 (a-d), responde a las preguntas de la siguiente lista, si no, continúa con la pregunta 16.</p>
                     <p class="text-lg font-medium mb-4">En esta lista encontrarás una serie de reacciones que pueden experimentar las personas que están viviendo una situación estresante. Lee detenidamente cada pregunta y marca en qué grado te ha afectado esa situación durante EL ÚLTIMO MES.</p>
                     <div class="flex flex-col space-y-4">
@@ -865,7 +873,7 @@
                                 <label class="radio-option"><input type="radio" name="q15_r" value="Nada" /> Nada</label>
                                 <label class="radio-option"><input type="radio" name="q15_r" value="Un poco" /> Un poco</label>
                                 <label class="radio-option"><input type="radio" name="q15_r" value="Algo" /> Algo</label>
-                                <label class="radio-option"><input type="radio" name="q15_r" value="Bastante" /> Bastante</label>
+                                 <label class="radio-option"><input type="radio" name="q15_r" value="Bastante" /> Bastante</label>
                                 <label class="radio-option"><input type="radio" name="q15_r" value="Mucho" /> Mucho</label>
                             </div>
                         </div>
@@ -938,7 +946,7 @@
                 </div>
 
                 <!-- Desktop View for P16 Table -->
-                <div id="q16TableDesktop" class="mt-6 p-4 border rounded-lg desktop-view" style="background-color: rgba(23, 55, 99, 0.05);">
+                <div id="q16TableDesktop" class="mt-6 p-4 border rounded-lg desktop-view hidden" style="background-color: rgba(23, 55, 99, 0.05);">
                     <p class="text-sm italic mb-4">NOTA: Si en alguna de las preguntas anteriores (16a o 16b) has contestado “Más de la mitad de los días” o “casi todos los días”, responde a las preguntas de la siguiente tabla. Si no, continúa en la pregunta 17.</p>
                     <p class="text-lg font-medium mb-4">Durante las 2 ÚLTIMAS SEMANAS, ¿Con qué frecuencia has sentido los siguientes problemas?</p>
                     <div class="overflow-x-auto">
@@ -1001,7 +1009,7 @@
                 </div>
 
                 <!-- Mobile View for P16 List -->
-                <div id="q16TableMobile" class="mt-6 p-4 border rounded-lg mobile-view" style="background-color: rgba(23, 55, 99, 0.05);">
+                <div id="q16TableMobile" class="mt-6 p-4 border rounded-lg mobile-view hidden" style="background-color: rgba(23, 55, 99, 0.05);">
                     <p class="text-sm italic mb-4">NOTA: Si en alguna de las preguntas anteriores (16a o 16b) has contestado “Más de la mitad de los días” o “casi todos los días”, responde a las preguntas de la siguiente lista. Si no, continúa en la pregunta 17.</p>
                     <p class="text-lg font-medium mb-4">Durante las 2 ÚLTIMAS SEMANAS, ¿Con qué frecuencia has sentido los siguientes problemas?</p>
                     <div class="flex flex-col space-y-4">
@@ -1217,7 +1225,7 @@
         }
 
         const supabaseUrl = 'https://syscmsennlikqzikbznl.supabase.co';
-        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN5c2Ntc2Vubmxpa3F6aWtiem5sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0MTQ0MDcsImV4cCI6MjA2NTk5MDQwN30.I5cQJNCEFtF1NAIypmgMBYAIiVnSyhu_7C1WhKzCVxE';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN5c2Ntc2Vubmxpa3F6aWbiem5sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0MTQ0MDcsImV4cCI6MjA2NTk5MDQwN30.I5cQJNCEFtF1NAIypmgMBYAIiVnSyhu_7C1WhKzCVxE';
 
         const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
 
@@ -1525,3 +1533,4 @@
     </script>
 </body>
 </html>
+```
